@@ -4,6 +4,7 @@ const app = express()
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 
+app.set('port', (process.env.PORT || 3001));
 
 // configure body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -18,6 +19,6 @@ app.get('/', function (req, res) {
 
 require('./routes/itemRoutes')(app);
 
-app.listen(3001, function () {
+app.listen(app.get('port'), function () {
   console.log('Example app listening on port 3001!')
 })
