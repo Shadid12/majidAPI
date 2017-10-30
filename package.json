@@ -13,6 +13,8 @@
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
+    "express-csv": "^0.6.0",
+    "json2csv": "^3.11.4",
     "mongoose": "^4.12.2"
   }
 }
