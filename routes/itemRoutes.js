@@ -1,5 +1,4 @@
-var json2csv = require('json2csv');
-var fields = ['_id', 'geocode'];
+
 var Item = require('../models/Item');
 
 
@@ -20,18 +19,15 @@ module.exports = app => {
 	// get all the lists of the items
 
 	app.get('/index', (req, res) => {
-		Item.find((err, items) => {
-			if (err) {
-				console.log(err);
-			}
-			csv = ""
-			items.forEach( (element) => {
-    			var arr = element.geocode.split("R04~");
-    			add = arr[1].split("|")[0];
-    			csv = csv + add + ","
-			});
-			res.send(csv);
-		});
+		    Item.aggregate([
+		        {$group : {_id : "$username", items : {$addToSet : "$address"}}}
+		    ], function (err, result) {
+		        if (err) {
+		            console.log(err);
+		            return;
+		        }
+		        res.json(result);
+		    });
 	});
 
 }
