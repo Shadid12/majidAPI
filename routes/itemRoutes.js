@@ -20,7 +20,12 @@ module.exports = app => {
 
 	app.get('/index', (req, res) => {
 		    Item.aggregate([
-		        {$group : {_id : "$username", items : {$addToSet : "$address"}}}
+		        {$group : {_id : "$username", 
+		        			address : {$addToSet : "$address"},
+		        			postal  : {$addToSet : "$postal" } 
+		        		  
+		        		  }
+		        }
 		    ], function (err, result) {
 		        if (err) {
 		            console.log(err);
