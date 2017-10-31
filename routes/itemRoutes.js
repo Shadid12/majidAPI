@@ -16,8 +16,16 @@ module.exports = app => {
 			}
 		})
 	})
-	// get all the lists of the items
 
+	// get plain 
+
+	app.get('/plain', (req, res) => {
+		Item.find({}, (err, items) => {
+			res.json(items);
+		})
+	})
+
+	// get all the lists of the items
 	app.get('/index', (req, res) => {
 		    Item.aggregate([
 		        {$group : {_id : "$username", 
