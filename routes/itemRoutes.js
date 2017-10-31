@@ -18,7 +18,6 @@ module.exports = app => {
 	})
 
 	// get plain 
-
 	app.get('/plain', (req, res) => {
 		Item.find({}, (err, items) => {
 			res.json(items);
@@ -42,5 +41,12 @@ module.exports = app => {
 		        res.json(result);
 		    });
 	});
-
+	// delete
+	app.delete('/', (req, res) => {
+		Item.remove({}, (err, result) => {
+			if(!err) {
+				res.json({ message: 'database cleaned' });
+			}
+		})
+	})
 }
