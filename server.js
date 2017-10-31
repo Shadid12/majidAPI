@@ -10,8 +10,16 @@ app.set('port', (process.env.PORT || 3001));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
 mongoose.connect(keys.mongoURI);
+
+// allow CORS
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
