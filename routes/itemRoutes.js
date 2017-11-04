@@ -10,6 +10,8 @@ module.exports = app => {
 		item.username = req.body.username;
 		item.address  = req.body.address;
 		item.postal   = req.body.postal ;
+		item.city     = req.body.city;
+		item.pin      = req.body.pin;
 		item.save((err) => {
 			if(!err){
 				res.json({message: 'item created'});
