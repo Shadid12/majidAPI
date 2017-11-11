@@ -26,20 +26,16 @@ module.exports = app => {
 
 	// get item by username
 	app.get('/index', (req, res) => {
-		    Item.aggregate([
-		        {$group : {_id : "$username", 
-		        			address : {$addToSet : "$address"},
-		        			postal  : {$addToSet : "$postal" } 
-		        		  
-		        		  }
-		        }
-		    ], function (err, result) {
-		        if (err) {
-		            console.log(err);
-		            return;
-		        }
-		        res.json(result);
-		    });
+		    Item.find({}, (err, result) => {
+		    	var userMap = {}
+		    	result.forEach((item) => {
+		    		userMap[item.username] = [];
+		    	});
+		    	result.forEach((item) => {
+		    		userMap[item.username].push(item);
+		    	});
+		    	res.json(userMap);
+		    })
 	});
 
 	// get count by username
