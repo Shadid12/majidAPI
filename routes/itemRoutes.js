@@ -10,6 +10,7 @@ module.exports = app => {
 		item.username = req.body.username;
 		item.address  = req.body.address;
 		item.pin      = req.body.pin;
+		item.count    = req.body.count;
 		item.save((err) => {
 			if(!err){
 				res.json({message: 'item created'});
