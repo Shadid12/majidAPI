@@ -34,7 +34,16 @@ module.exports = app => {
 		    	result.forEach((item) => {
 		    		userMap[item.username].push(item);
 		    	});
-		    	res.json(userMap);
+		    	var results = []
+		    	for (var key in userMap) {
+		    		var userObj = {
+		    			name: key,
+		    			arr: userMap[key]
+		    		}
+		    		results.push(userObj);
+		    	}
+		    	res.json(results);
+
 		    })
 	});
 
