@@ -1,16 +1,14 @@
 
-var Item = require('../models/Item');
+var Room = require('../models/Room');
 
 
 module.exports = app => {
 	// post a new item
 	app.post('/item', (req, res) => {
-		var item = new Item();
-		console.log(req.body.username);
-		item.username = req.body.username;
-		item.address  = req.body.address;
-		item.pin      = req.body.pin;
-		item.count    = req.body.count;
+		var item = new Room();
+		item.name = req.body.name;
+		item.long  = req.body.long;
+		item.lat      = req.body.lat;
 		item.save((err) => {
 			if(!err){
 				res.json({message: 'item created'});

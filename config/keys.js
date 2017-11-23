@@ -1,4 +1,4 @@
 module.exports = {
-    'mongoURI': 'mongodb://root:toor@ds149268.mlab.com:49268/shadid',
+    'mongoURI': 'mongodb://shadid:root@ds042607.mlab.com:42607/shadid',
     'cookieKey': 'asdasdllkdooajsdoj'
 }
