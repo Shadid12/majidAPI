@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!')
 })
 
-require('./routes/itemRoutes')(app);
+require('./routes/roomRoutes')(app);
 
 app.listen(app.get('port'), function () {
   console.log('Example app listening on port 3001!')
