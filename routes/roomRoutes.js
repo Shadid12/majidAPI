@@ -22,4 +22,19 @@ module.exports = app => {
 			}
 		})
 	})
+
+	// update room
+	app.put('/rooms/:id', (req, res) => {
+		Room.findById({_id: req.params.id} , (err, room) => {
+			if(!err) {
+				console.log(req.body.song);
+				room.playlist.push(req.body.song);
+				room.save( (err) => {
+					if(!err) {
+						res.json({message: 'updated'});
+					}
+				})
+			}
+		});
+	})
 }
