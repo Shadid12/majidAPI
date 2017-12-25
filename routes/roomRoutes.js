@@ -23,6 +23,15 @@ module.exports = app => {
 		})
 	})
 
+	// get a room
+	app.get('/rooms/:id', (req, res) => {
+		Room.findById({ _id: req.params.id }, (err, room) => {
+			if(!err) {
+				res.json({room: room});
+			}
+		})
+	})
+
 	// update room
 	app.put('/rooms/:id', (req, res) => {
 		Room.findById({_id: req.params.id} , (err, room) => {
