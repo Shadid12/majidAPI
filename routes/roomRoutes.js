@@ -46,4 +46,13 @@ module.exports = app => {
 			}
 		});
 	})
+
+	// delete rooms 
+	app.delete('/rooms', (req, res) => {
+		Room.remove({}, (err, result) => {
+			if(!err) {
+				res.json({message: 'all rooms deleted'});
+			}
+		})
+	})
 }
